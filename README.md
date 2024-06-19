@@ -1,2 +1,114 @@
 # PUDM
-[A Conditional Denoising Diffusion Probabilistic Model for Point Cloud Upsampling, 2024, CVPR]
+
+This repo is the official project repository of the paper **_A Conditional Denoising Diffusion Probabilistic Model for Point Cloud Upsampling_**. 
+ - [ [paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Qu_A_Conditional_Denoising_Diffusion_Probabilistic_Model_for_Point_Cloud_Upsampling_CVPR_2024_paper.pdf) ] [ [supp](https://openaccess.thecvf.com/content/CVPR2024/supplemental/Qu_A_Conditional_Denoising_CVPR_2024_supplemental.pdf) ]
+
+
+## The Overall Framework 
+<img src="assets/pudm.png" alt="pudm" width="800"/> 
+
+## Overview
+- [Citation](#citation)
+- [Installation](#installation)
+- [Data Preparation](#data-preparation)
+- [Model Zoo](#model-zoo)
+- [Quick Start](#quick-start)
+
+
+## Citation
+If you find _PUDM_ useful to your research, please cite our work as an acknowledgment.
+```bib
+@InProceedings{Qu_2024_CVPR,
+    author    = {Qu, Wentao and Shao, Yuantian and Meng, Lingwu and Huang, Xiaoshui and Xiao, Liang},
+    title     = {A Conditional Denoising Diffusion Probabilistic Model for Point Cloud Upsampling},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2024},
+    pages     = {20786-20795}
+}
+```
+
+## Installation
+
+### Requirements
+Recommendation:
+- Ubuntu: 18.04 and above
+- CUDA: 11.1 and above
+- PyTorch: 1.9.1 and above
+- python: 3.7 and above
+
+### Environment
+
+- Base environment
+```
+conda create -n pudm python=3.7 -y
+conda activate pudm
+
+conda install cudatoolkit
+pip install nvidia-cudnn-cu11
+
+pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
+
+pip install open3d
+pip install transforms3d==0.3.1
+pip install termcolor
+pip install tqdm
+pip install einops
+pip install h5py
+
+# install pointnet2
+https://github.com/erikwijmans/Pointnet2_PyTorch/tree/master
+
+# compile
+sh compile.sh
+```
+
+
+## Data Preparation
+Please download [ [PU1K](https://github.com/guochengqian/PU-GCN) ] and [ [PUGAN](https://github.com/liruihui/PU-GAN) ]. 
+```
+# For generating test data, please see pointnet2/dataloder/prepare_dataset.py
+# For example, we can generate 4x test set of PUGAN with 0.1 Gaussion noise:
+cd PUDM-main/pointnet2/dataloder
+python prepare_dataset.py --input_pts_num 2048 --R 4 --noise_level 0.1 --noise_type gaussian --mesh_dir mesh_dir --save_dir save_dir
+```
+
+## Model Zoo
+Please download our checkpoints: <br/>
+[ [Baidu Netdisk](https://pan.baidu.com/s/1k9VgQ_VI_OzawrPxqwfQdw) ] or
+[ [Google Drive](https://drive.google.com/drive/folders/1XIgLSpAPmt_Zjn9SSBF4EWSCyiHF6ByZ?usp=drive_link) ] <br/>
+Please put checkpoints in the PUDM-main/pointnet2/pkls folder. 
+
+## Quick Start
+### Example
+We provide some examples. There examples are in the PUDM-main/pointnet2/example folder. The results are in the PUDM-main/pointnet2/test/example folder.
+```bash
+# For example, we can run 30 steps (DDIM) to generate 4x point cloud on KITTI with the pre-trained model of PUGAN.
+cd PUDM-main/pointnet2
+python example_samples.py --dataset PUGAN --R 4 --step 30 --example_file ./example/KITTI.xyz
+```
+### Training
+We provide two datasets to train PUDM, PUGAN and PU1K. The results are in the PUDM-main/pointnet2/exp_{dataset} folder.
+```bash
+# For training PUGAN
+cd PUDM-main/pointnet2
+python train.py --dataset PUGAN
+```
+```bash
+# For training PU1K
+cd PUDM-main/pointnet2
+python train.py --dataset PU1K
+```
+### Test
+We provide two datasets to test PUDM. The results are in the PUDM-main/pointnet2/test/{dataset} folder.
+```
+# For testing PUGAN
+cd PUDM-main/pointnet2
+python samples.py --dataset PUGAN --R 4 --step 30 --batch_size=27
+```
+
+```
+# For testing PU1K
+cd PUDM-main/pointnet2
+python samples.py --dataset PU1K --R 4 --step 30 --batch_size=43
+```
