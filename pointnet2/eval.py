@@ -4,7 +4,7 @@ import numpy as np
 import torch
 import shutil
 
-from util import rescale, find_max_epoch, print_size, sampling, sampling_ddim,calc_diffusion_hyperparams, AverageMeter,pc_normalization,numpy_to_pc
+from util import rescale, find_max_epoch, print_size, sampling, sampling_ddim,calc_diffusion_hyperparams, AverageMeter,pc_normalization,numpy_to_pc,pc_normalize
 from Chamfer3D.dist_chamfer_3D import chamfer_3DDist,hausdorff_distance
 
 import time

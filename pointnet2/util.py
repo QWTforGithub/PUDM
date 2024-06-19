@@ -10,6 +10,12 @@ from einops import rearrange, repeat
 from pointops.functions import pointops
 import torch.backends.cudnn as cudnn
 
+def pc_normalize(pc):
+    centroid = np.mean(pc, axis=0)
+    pc = pc - centroid
+    m = np.max(np.sqrt(np.sum(pc ** 2, axis=1)))
+    pc = pc / m
+    return pc
 
 def add_noise(pts, sigma, clamp):
     # input: (b, 3, n)

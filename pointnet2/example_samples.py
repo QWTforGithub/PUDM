@@ -24,7 +24,8 @@ def main(
         example_file='',
         gamma=0.5,
         R=4,
-        step=30
+        step=30,
+        normalization=True
 ):
     if (not os.path.exists(save_dir)):
         os.makedirs(save_dir)
@@ -63,7 +64,8 @@ def main(
         step=step,
         save_dir=save_dir,
         gamma=gamma,
-        example_file=example_file
+        example_file=example_file,
+        normalization=normalization
     )
 
 
@@ -84,6 +86,7 @@ if __name__ == "__main__":
     batch_size = 1
     gamma = 0.5
     step = 30
+    normalization = True
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--dataset', type=str, default=dataset)
@@ -94,6 +97,7 @@ if __name__ == "__main__":
     parser.add_argument('--device_ids', type=str, default=device_ids, help='gpu device indices to use')
     parser.add_argument('--gamma', type=float, default=gamma)
     parser.add_argument('--step', type=int, default=step)
+    parser.add_argument('--normalization', type=bool, default=normalization)
 
     args = parser.parse_args()
 
@@ -133,6 +137,7 @@ if __name__ == "__main__":
             example_file=args.example_file,
             gamma=args.gamma,
             R=args.R,
-            step=args.step
+            step=args.step,
+            normalization=normalization
         )
 

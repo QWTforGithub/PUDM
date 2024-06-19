@@ -3,7 +3,7 @@ import open3d
 import numpy as np
 import torch
 
-from util import rescale, find_max_epoch, print_size, sampling, sampling_ddim, calc_diffusion_hyperparams, AverageMeter,pc_normalization,numpy_to_pc
+from util import rescale, find_max_epoch, print_size, sampling, sampling_ddim, calc_diffusion_hyperparams, AverageMeter,pc_normalization,numpy_to_pc,pc_normalize
 
 import time
 
@@ -22,6 +22,7 @@ def evaluate(
         save_sp=True,               # pre sparse point cloud
         save_z = False,             # input Gaussian noise
         save_condition = True,     # input sparse point cloud
+        normalization=True
 ):
 
     times = 0
@@ -81,6 +82,14 @@ def evaluate(
         z_np = z[0].detach().cpu().numpy()
         condition_np = condition[0].detach().cpu().numpy()
         name = example_file.split("/")[-1].split(".")[0]
+
+        # ---- normalization ----
+        if(normalization):
+            generated_np = pc_normalize(generated_np)
+            condition_pre_np = pc_normalize(condition_pre_np)
+            z_np = pc_normalize(z_np)
+            condition_np = pc_normalize(condition_np)
+        # ---- normalization ----
 
         # ---- generated ----
         generated_points = generated_np
