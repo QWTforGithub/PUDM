@@ -52,7 +52,6 @@ def main(
     datasetset_config['batch_size'] = batch_size * torch.cuda.device_count()
     datasetset_config['eval_batch_size'] = batch_size * torch.cuda.device_count()
     data_scale = datasetset_config['scale']
-    npoints = datasetset_config['npoints']
 
     evaluate(
         net=net,
@@ -60,7 +59,6 @@ def main(
         print_every_n_steps=diffusion_config["T"] // 5,
         scale=data_scale,
         R=R,
-        npoints=npoints,
         T=diffusion_config["T"],
         step=step,
         save_dir=save_dir,
@@ -76,10 +74,10 @@ if __name__ == "__main__":
     dataset = "PUGAN"
     save_dir = f"./test/example"
 
-    # example_file = f"./example/KITTI.xyz"
+    example_file = f"./example/KITTI.xyz"
     # example_file = f"./example/ScanNet.xyz"
     # example_file = f"./example/pig_Gaussian_noise_0.01.xyz"
-    example_file = f"./example/pig.xyz"
+    # example_file = f"./example/pig.xyz"
 
     R = 4
     device_ids = "1"

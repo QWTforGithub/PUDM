@@ -14,7 +14,6 @@ def evaluate(
         print_every_n_steps=200,
         scale=1,
         R=4,
-        npoints=2048,
         gamma=0.5,
         T=1000,
         step=30,
@@ -32,11 +31,12 @@ def evaluate(
     save_condition =save_condition
     save_sp = save_sp
 
-    print(f"**** {npoints} -----> {npoints * R} ****")
-
     label = torch.from_numpy(np.full(shape=(1,), fill_value=R-1, dtype=np.int64)).cuda()
     pc = open3d.io.read_point_cloud(example_file)
     condition = torch.from_numpy(np.asarray(pc.points, dtype=np.float32)).unsqueeze(dim=0).cuda()
+    _,N,C = condition.shape
+
+    print(f"**** {N} -----> {N * R}, ===> Upsampling : {R}x, Example File : {example_file} **** ")
 
     batch = 1
     num_points = R * condition.shape[1]
