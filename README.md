@@ -68,8 +68,12 @@ sh compile.sh
 Please download [ [PU1K](https://github.com/guochengqian/PU-GCN) ] and [ [PUGAN](https://github.com/liruihui/PU-GAN) ]. 
 ```
 # For generating test data, please see pointnet2/dataloder/prepare_dataset.py
-# For example, we can generate 4x test set of PUGAN with 0.1 Gaussion noise:
 cd PUDM-main/pointnet2/dataloder
+
+# For example 1, we can generate 4x test set of PUGAN:
+python prepare_dataset.py --input_pts_num 2048 --R 4 --mesh_dir mesh_dir --save_dir save_dir
+
+# For example 2, we can generate 4x test set of PUGAN with 0.1 Gaussion noise:
 python prepare_dataset.py --input_pts_num 2048 --R 4 --noise_level 0.1 --noise_type gaussian --mesh_dir mesh_dir --save_dir save_dir
 ```
 
@@ -87,6 +91,8 @@ We provide some examples. There examples are in the PUDM-main/pointnet2/example 
 cd PUDM-main/pointnet2
 python example_samples.py --dataset PUGAN --R 4 --step 30 --example_file ./example/KITTI.xyz
 ```
+This will produce the following result:
+<img src="assets/kitti.png" alt="kitti" width="800"/> 
 ### Training
 We provide two datasets to train PUDM, PUGAN and PU1K. The results are in the PUDM-main/pointnet2/exp_{dataset} folder.
 ```bash
