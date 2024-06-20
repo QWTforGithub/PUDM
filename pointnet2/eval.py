@@ -176,7 +176,7 @@ def evaluate(
                 generated_pc = numpy_to_pc(generated_points)
                 generated_path = os.path.join(save_path,f"{name}.xyz")
                 open3d.io.write_point_cloud(filename=generated_path,pointcloud=generated_pc)
-                print(f"---- saving : {generated_path} ----")
+                print(f"---- saving generated dense point cloud: {generated_path} ----")
                 # ---- generated ----
 
                 # ---- mesh ----
@@ -184,17 +184,17 @@ def evaluate(
                     mesh_source = os.path.join(mesh_path,f"{name}.off")
                     mesh_dist = os.path.join(save_path,f"{name}.off")
                     shutil.copy(mesh_source,mesh_dist)
-                    print(f"---- saving : {mesh_dist} ----")
+                    print(f"---- saving mesh: {mesh_dist} ----")
                 # ---- mesh ----
 
-                # ---- condition ----
+                # ---- pre condition ----
                 if(save_sp):
                     condition_pre_points = condition_pre_np[i]
                     condition_pre_pc = numpy_to_pc(condition_pre_points)
                     condition_pre_path = os.path.join(save_path,f"{name}_sp.xyz")
                     open3d.io.write_point_cloud(filename=condition_pre_path,pointcloud=condition_pre_pc)
-                    print(f"---- saving : {condition_pre_path} ----")
-                # ---- condition ----
+                    print(f"---- saving generated sparse point cloud: {condition_pre_path} ----")
+                # ---- pre condition ----
 
                 # ---- z ----
                 if(save_z):
@@ -202,7 +202,7 @@ def evaluate(
                     z_pc = numpy_to_pc(z_points)
                     z_path = os.path.join(save_path,f"{name}_z.xyz")
                     open3d.io.write_point_cloud(filename=z_path,pointcloud=z_pc)
-                    print(f"---- saving : {z_path} ----")
+                    print(f"---- saving input Gaussian noise: {z_path} ----")
                 # ---- z ----
 
                 # ---- gt ----
@@ -211,7 +211,7 @@ def evaluate(
                     gt_pc = numpy_to_pc(gt_points)
                     gt_path = os.path.join(save_path,f"{name}_gt.xyz")
                     open3d.io.write_point_cloud(filename=gt_path,pointcloud=gt_pc)
-                    print(f"---- saving : {gt_path} ----")
+                    print(f"---- saving truth dense point cloud: {gt_path} ----")
                 # ---- gt ----
 
                 # ---- condition ----
@@ -220,7 +220,7 @@ def evaluate(
                     condition_pc = numpy_to_pc(condition_points)
                     condition_path = os.path.join(save_path,f"{name}_condition.xyz")
                     open3d.io.write_point_cloud(filename=condition_path,pointcloud=condition_pc)
-                    print(f"---- saving : {condition_path} ----")
+                    print(f"---- saving input sparse point cloud: {condition_path} ----")
                 # ---- condition ----
             # ---- save data ----
 
