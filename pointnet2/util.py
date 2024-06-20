@@ -393,7 +393,7 @@ def sampling(
         R=4,
         gamma=0.5
 ):
-    print("---- DDIM Sampling ----")
+    print("---- DDPM Sampling ----")
 
     _dh = diffusion_hyperparams
     T, Alpha, Alpha_bar, Sigma = _dh["T"], _dh["Alpha"], _dh["Alpha_bar"], _dh["Sigma"]
