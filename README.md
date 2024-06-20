@@ -67,7 +67,7 @@ sh compile.sh
 ## Data Preparation
 Please download [ [PU1K](https://github.com/guochengqian/PU-GCN) ] and [ [PUGAN](https://github.com/liruihui/PU-GAN) ]. 
 ```
-# For generating test data, please see pointnet2/dataloder/prepare_dataset.py
+# For generating test data, please see PUDM-main/pointnet2/dataloder/prepare_dataset.py
 cd PUDM-main/pointnet2/dataloder
 
 # For example 1, we can generate 4x test set of PUGAN:
