@@ -1,4 +1,4 @@
-# PUDM [2024, CVPR]
+# PUDM
 
 This repo is the official project repository of the paper **_A Conditional Denoising Diffusion Probabilistic Model for Point Cloud Upsampling_**. 
  - [ [paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Qu_A_Conditional_Denoising_Diffusion_Probabilistic_Model_for_Point_Cloud_Upsampling_CVPR_2024_paper.pdf) ] [ [supp](https://openaccess.thecvf.com/content/CVPR2024/supplemental/Qu_A_Conditional_Denoising_CVPR_2024_supplemental.pdf) ]
