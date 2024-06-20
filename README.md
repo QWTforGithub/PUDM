@@ -93,7 +93,7 @@ cd PUDM-main/pointnet2
 python example_samples.py --dataset PUGAN --R 4 --step 30 --example_file ./example/KITTI.xyz
 ```
 This will produce the following result:
-<img src="assets/kitti.png" alt="kitti" width="800"/> 
+<img src="assets/example_kitti.png" alt="example_kitti" width="800"/> 
 ### Training
 We provide two datasets to train PUDM, PUGAN and PU1K. The results are in the PUDM-main/pointnet2/exp_{dataset} folder.
 ```bash
