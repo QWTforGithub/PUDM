@@ -31,7 +31,7 @@ If you find _PUDM_ useful to your research, please cite our work as an acknowled
 ## Installation
 
 ### Requirements
-The following environment is recommended for running PUDM:
+The following environment is recommended for running _PUDM_:
 - Ubuntu: 18.04 and above
 - CUDA: 11.1 and above
 - PyTorch: 1.9.1 and above
