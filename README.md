@@ -5,7 +5,7 @@ This repo is the official project repository of the paper **_A Conditional Denoi
 
 
 ## The Overall Framework 
-<img src="assets/pudm.png" alt="pudm" width="800"/> 
+<img src="assets/pudm.png" alt="pudm" width="900"/> 
 
 ## Overview
 - [Citation](#citation)
@@ -93,7 +93,7 @@ cd PUDM-main/pointnet2
 python example_samples.py --dataset PUGAN --R 4 --step 30 --example_file ./example/KITTI.xyz
 ```
 This will produce the following result:
-<img src="assets/kitti_example.png" alt="kitti_example" width="800"/> 
+<img src="assets/kitti_example.png" alt="kitti_example" width="900"/> 
 ### Training
 We provide two datasets to train PUDM, PUGAN and PU1K. The results are in the PUDM-main/pointnet2/exp_{dataset} folder.
 ```bash
