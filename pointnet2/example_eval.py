@@ -21,7 +21,7 @@ def evaluate(
         save_xyz = True,            # pre dense point cloud
         save_sp=True,               # pre sparse point cloud
         save_z = False,             # input Gaussian noise
-        save_condition = True,     # input sparse point cloud
+        save_condition = True,      # input sparse point cloud
         normalization=True
 ):
 
@@ -96,17 +96,17 @@ def evaluate(
         generated_pc = numpy_to_pc(generated_points)
         generated_path = os.path.join(save_path,f"{name}.xyz")
         open3d.io.write_point_cloud(filename=generated_path,pointcloud=generated_pc)
-        print(f"---- saving : {generated_path} ----")
+        print(f"---- saving generated dense point cloud: {generated_path} ----")
         # ---- generated ----
 
-        # ---- input condition ----
+        # ---- pre condition ----
         if(save_sp):
             condition_pre_points = condition_pre_np
             condition_pre_pc = numpy_to_pc(condition_pre_points)
             condition_pre_path = os.path.join(save_path,f"{name}_sp.xyz")
             open3d.io.write_point_cloud(filename=condition_pre_path,pointcloud=condition_pre_pc)
-            print(f"---- saving : {condition_pre_path} ----")
-        # ---- input condition ----
+            print(f"---- saving generated sparse point cloud: {condition_pre_path} ----")
+        # ---- pre condition ----
 
         # ---- z ----
         if(save_z):
@@ -114,17 +114,17 @@ def evaluate(
             z_pc = numpy_to_pc(z_points)
             z_path = os.path.join(save_path,f"{name}_z.xyz")
             open3d.io.write_point_cloud(filename=z_path,pointcloud=z_pc)
-            print(f"---- saving : {z_path} ----")
+            print(f"---- saving input Gaussian noise: {z_path} ----")
         # ---- z ----
 
-        # ---- pre condition ----
+        # ---- input condition ----
         if(save_condition):
             condition_points = condition_np
             condition_pc = numpy_to_pc(condition_points)
             condition_path = os.path.join(save_path,f"{name}_condition.xyz")
             open3d.io.write_point_cloud(filename=condition_path,pointcloud=condition_pc)
-            print(f"---- saving : {condition_path} ----")
-        # ---- pre condition ----
+            print(f"---- saving input sparse point cloud: {condition_path} ----")
+        # ---- input condition ----
         # ---- save data ----
 
     print(f"Times : {times}")
