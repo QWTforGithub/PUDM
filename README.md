@@ -106,7 +106,7 @@ python train.py --dataset PUGAN
 cd PUDM-main/pointnet2
 python train.py --dataset PU1K
 ```
-### Test
+### Testing
 We provide two datasets to test PUDM. The results are in the PUDM-main/pointnet2/test/{dataset} folder.
 ```
 # For testing PUGAN
