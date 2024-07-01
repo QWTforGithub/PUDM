@@ -59,7 +59,7 @@ pip install h5py
 # install pointnet2
 https://github.com/erikwijmans/Pointnet2_PyTorch/tree/master
 
-# compile
+# compile C++ extension packages
 sh compile.sh
 ```
 
