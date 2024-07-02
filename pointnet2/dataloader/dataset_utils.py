@@ -73,125 +73,6 @@ def get_file_num(file_path):
     file_num = glob.glob(file_path)
     return len(file_num)
 
-def scanNet_check(scan_path,remove=False):
-
-    scans = [name.split("/")[-1] for name in glob.glob(scan_path+"/scene*")]
-    scans = sorted_alphanum(scans)
-    invalid_folders = []
-    valid_folders = []
-    for i,scan_name in enumerate(scans):
-        # print(f"-------------------------- i:{i}, {scan_name} ----------------------------")
-        folder_path = os.path.join(scan_path,scan_name)
-        folders = glob.glob(os.path.join(folder_path,"*"))
-        folders_num = len(folders)
-        if(folders_num<4):
-            print(f"---- Invalid folder : {scan_name}, folder_num : {folders_num}, foloder : {folders}----")
-            invalid_folders.append(scan_name)
-            if(remove):
-                shutil.rmtree(folder_path)
-                print(f"Removing : {folder_path}")
-            continue
-        colors_path = os.path.join(scan_path,scan_name,"color/*.png")
-        colors_num = get_file_num(colors_path)
-        depths_path = os.path.join(scan_path,scan_name,"depth/*.png")
-        depths_num = get_file_num(depths_path)
-        poses_path = os.path.join(scan_path,scan_name,"pose/*.txt")
-        poses_num = get_file_num(poses_path)
-        intrinsic_path = os.path.join(scan_path,scan_name,"intrinsic/*.txt")
-        intrinsic_num = get_file_num(intrinsic_path)
-        if(colors_num != depths_num or colors_num != poses_num or intrinsic_num != 4):
-            print(f"---- Invalid folder : {scan_name}, color : {colors_num}, depth : {depths_num}, pose : {poses_num}, intrinsic_num : {intrinsic_num} ----")
-            invalid_folders.append(scan_name)
-            if(remove):
-                shutil.rmtree(folder_path)
-                print(f"Removing : {folder_path}")
-            continue
-        valid_folders.append(scan_name)
-        # print(f"|||| Valid folder : {scan_name}, folder : {folders} ||||")
-        # print(f"-------------------------- i:{i}, {scan_name} ----------------------------\n")
-    return valid_folders
-
-def scanNet_origin_check(scan_path,mode="test",remove=False):
-
-    scans = [name.split("/")[-1] for name in glob.glob(scan_path+"/scene*")]
-    scans_num = len(scans)
-    print(f"Current ScanNet Scene Number : {scans_num}, Mode : {mode}")
-    scans = sorted_alphanum(scans)
-    invalid_folders = []
-    '''
-        train:
-            scene0185_00 -- scene0185_00_2d-instance-filt.zip not exist!
-            scene0185_00 -- scene0185_00_2d-label.zip not exist!
-            scene0185_00 -- scene0185_00_2d-label-filt.zip not exist!
-            //// scene0185_00 is not Safe! \\\\
-        test:
-            Invalid Scenes Num : 0
-    '''
-    for i,scan_name in enumerate(scans):
-        if(mode == "train"):
-            files = [
-                f"{scan_name}.aggregation.json",
-                f"{scan_name}.sens",
-                f"{scan_name}_vh_clean.aggregation.json",
-                f"{scan_name}_vh_clean.ply",
-                f"{scan_name}_vh_clean.segs.json",
-                f"{scan_name}_vh_clean_2.0.010000.segs.json",
-                f"{scan_name}_vh_clean_2.labels.ply",
-                f"{scan_name}_vh_clean_2.ply",
-                f"{scan_name}_2d-instance.zip",
-                f"{scan_name}_2d-instance-filt.zip",
-                f"{scan_name}_2d-label.zip",
-                f"{scan_name}_2d-label-filt.zip",
-                f"{scan_name}.txt",
-            ]
-        elif(mode == "test"):
-            files = [
-                f"{scan_name}.sens",
-                f"{scan_name}_vh_clean.ply",
-                f"{scan_name}_vh_clean_2.ply",
-                f"{scan_name}.txt",
-            ]
-        else:
-            print("Error Mode !")
-            exit(1)
-        fige = 0
-        for file in files:
-            file_path = os.path.join(scan_path,scan_name,file)
-            if(not os.path.exists(file_path)):
-                print(f"{scan_name} -- {file} not exist!")
-                fige = 1
-        if(fige):
-            invalid_folders.append(scan_name)
-            print(f"//// {scan_name} is not Safe! \\\\\\\\")
-        else:
-            print(f"---- {scan_name} is Safe! ----")
-
-    print(f"Invalid Scenes Num : {len(invalid_folders)}")
-    for folder in invalid_folders:
-        print(f"Invalid Scene : {folder}")
-        if(remove):
-            invalid_scan_path = os.path.join(scan_path,folder)
-            shutil.rmtree(invalid_scan_path)
-            print(f"Removing Scene: {folder}")
-
-def threeMatch_analysis(analysis_path = "/DISK/qwt/datasets/3dmatch/analysis_png"):
-
-    folders = [name.split("/")[-1] for name in glob.glob(analysis_path+"/*")]
-    for folder in folders:
-        seq_path = os.path.join(analysis_path,folder,"seq*")
-        seqs = [name.split("/")[-1] for name in glob.glob(seq_path)]
-        for seq in seqs:
-            image_path = os.path.join(analysis_path,folder,seq,"*.color.*")
-            images = [name.split("/")[-1].split(".")[0] for name in glob.glob(image_path)]
-            for image_name in images:
-                jpg_path = os.path.join(analysis_path,folder,seq,f"{image_name}.color.jpg")
-                image = Image.open(jpg_path)
-                # image = uio.process_image(image)
-                image = image.resize((640, 480), Image.BILINEAR)
-                png_path = os.path.join(analysis_path,folder,seq,f"{image_name}.color.png")
-                image.save(png_path,filename=png_path)
-                print(f"Saving : {png_path}")
-
 def get_folder_size(folder_path="/DISK/qwt"):
     '''
         getting the file size of target folder(B).
@@ -213,6 +94,19 @@ def get_folder_size(folder_path="/DISK/qwt"):
         file_size += os.path.getsize(folder_path)
         file_num += 1
     return file_size, file_num
+
+def bin2xyz(bin_path,xyz_path):
+    '''
+        convert *.bin to *.xyz (for KITTI)
+    :param bin_path: *.bin file path
+    :param xyz_path: saving path for *.xyz
+    '''
+    points = np.fromfile(bin_path, dtype=np.float32).reshape(-1, 4)[:, :3]
+    xyz_folder = xyz_path[:xyz_path.rfind("/")]
+    if(not os.path.exists(xyz_folder)):
+        os.makedirs(xyz_folder)
+    np.savetxt(fname=xyz_path, X=points)
+    print(f"Converting {bin_path} to {xyz_path}")
 
 if __name__ == '__main__':
     import pdb
