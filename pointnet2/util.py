@@ -485,11 +485,11 @@ def sampling_ddim(
             # x0 = (xt - sqrt(1-at_) * noise) 1 / sqrt(at_)
             x0 = (x - torch.sqrt(1 - Alpha_bar[t]) * epsilon_theta) / torch.sqrt(Alpha_bar[t])
             if(t > 0):
-                # sqrt(at-1_) * (xt - sqrt(1-at_) * noise) / sqrt(at_)
+                # sqrt(at-1_) * x0
                 c_xt_1_1 = torch.sqrt(Alpha_bar[t - 1]) * x0
                 # sqrt(1 - at-1_) * noise
                 c_xt_1_2 = torch.sqrt(1 - Alpha_bar[t - 1]) * epsilon_theta
-                # xt-1 = gamma * (xt-1 + i)
+                # xt-1 = gamma * (xt-1 + i) ==> q(xt-1|x0)
                 x = gamma * (c_xt_1_1 + c_xt_1_2 + i)
             else:
                 x = gamma * (x0 + i)
