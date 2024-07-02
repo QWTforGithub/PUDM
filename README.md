@@ -79,7 +79,7 @@ python prepare_dataset.py --input_pts_num 2048 --R 4 --noise_level 0.1 --noise_t
 
 ## Model Zoo
 Please download our checkpoints: <br/>
-[ [Baidu Netdisk](https://pan.baidu.com/s/1k9VgQ_VI_OzawrPxqwfQdw) ] or
+[ [Baidu Netdisk](https://pan.baidu.com/s/1k9VgQ_VI_OzawrPxqwfQdw) ] (code : r2h9) or
 [ [Google Drive](https://drive.google.com/drive/folders/1XIgLSpAPmt_Zjn9SSBF4EWSCyiHF6ByZ?usp=drive_link) ] <br/>
 Please put checkpoints in the PUDM-main/pointnet2/pkls folder. <br/>
 **_*Released model weights are temporarily as the model structure of PUDM may be adjusted later._**
