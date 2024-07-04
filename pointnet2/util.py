@@ -482,7 +482,7 @@ def sampling_ddim(
                 epsilon_theta = results
 
             # ---- xt -> xt-1 ----
-            # x0 = (xt - sqrt(1-at_) * noise) 1 / sqrt(at_)
+            # x0 = (xt - sqrt(1-at_) * noise) / sqrt(at_)
             x0 = (x - torch.sqrt(1 - Alpha_bar[t]) * epsilon_theta) / torch.sqrt(Alpha_bar[t])
             if(t > 0):
                 # sqrt(at-1_) * x0
