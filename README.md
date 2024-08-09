@@ -49,20 +49,17 @@ pip install nvidia-cudnn-cu11
 
 pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
 
-pip install open3d
-pip install transforms3d==0.3.1
-pip install termcolor
-pip install tqdm
-pip install einops
-pip install h5py
+pip install open3d termcolor tqdm einops transforms3d==0.3.1
+pip install msgpack-numpy lmdb h5py hydra-core==0.11.3 pytorch-lightning==0.7.1
+pip install scikit-image black usort flake8 matplotlib jupyter imageio fvcore plotly opencv-python
 
-# install pointnet2
-https://github.com/erikwijmans/Pointnet2_PyTorch/tree/master
+# For installing pytorch3d, please follow:
+1. download pytorch3d-0.6.1-py37_cu111_pyt191.tar.bz2 from https://anaconda.org/pytorch3d/pytorch3d/files?page=10
+2. conda install pytorch3d-0.6.1-py37_cu111_pyt191.tar.bz2
 
 # compile C++ extension packages
 sh compile.sh
 ```
-
 
 ## Data Preparation
 Please download [ [PU1K](https://github.com/guochengqian/PU-GCN) ] and [ [PUGAN](https://github.com/liruihui/PU-GAN) ]. 
