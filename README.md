@@ -64,7 +64,7 @@ sh compile.sh
 ## Data Preparation
 Please download [ [PU1K](https://github.com/guochengqian/PU-GCN) ] and [ [PUGAN](https://github.com/liruihui/PU-GAN) ]. 
 ```
-# For generating test data, please see PUDM-main/pointnet2/dataloder/prepare_dataset.py
+# For generating test data, please see **PUDM-main/pointnet2/dataloder/prepare_dataset.py**
 cd PUDM-main/pointnet2/dataloder
 
 # For example 1, we can generate 4x test set of PUGAN:
@@ -78,22 +78,22 @@ python prepare_dataset.py --input_pts_num 2048 --R 4 --noise_level 0.1 --noise_t
 Please download our checkpoints: <br/>
 [ [Baidu Netdisk](https://pan.baidu.com/s/1k9VgQ_VI_OzawrPxqwfQdw) ] (code : r2h9) or
 [ [Google Drive](https://drive.google.com/drive/folders/1XIgLSpAPmt_Zjn9SSBF4EWSCyiHF6ByZ?usp=drive_link) ] <br/>
-Please put checkpoints in the PUDM-main/pointnet2/pkls folder. <br/>
+Please put checkpoints in the **PUDM-main/pointnet2/pkls** folder. <br/>
 **_*Released model weights are temporarily as the model structure of PUDM may be adjusted later._**
 
 ## Quick Start
 ### Example
-We provide some examples. There examples are in the PUDM-main/pointnet2/example folder. The results are in the PUDM-main/pointnet2/test/example folder.
+We provide some examples. There examples are in the **PUDM-main/pointnet2/example** folder. The results are in the **PUDM-main/pointnet2/test/example** folder.
 ```bash
 # For example, we can run 30 steps (DDIM) to generate 4x point cloud on KITTI with the pre-trained model of PUGAN.
-# We provide the function (bin2xyz) of converting *.bin to *.xyz in PUDM-main/pointnet2/dataloder/dataset_utils.py.
+# We provide the function (bin2xyz) of converting *.bin to *.xyz in **PUDM-main/pointnet2/dataloder/dataset_utils.py**.
 cd PUDM-main/pointnet2
 python example_samples.py --dataset PUGAN --R 4 --step 30 --example_file ./example/KITTI.xyz
 ```
 This will produce the following result:
 <img src="assets/kitti_example.png" alt="kitti_example" width="900"/> 
 ### Training
-We provide two datasets to train PUDM, PUGAN and PU1K. The results are in the PUDM-main/pointnet2/exp_{dataset} folder.
+We provide two datasets to train PUDM, PUGAN and PU1K. The results are in the **PUDM-main/pointnet2/exp_{dataset}** folder.
 ```bash
 # For training PUGAN
 cd PUDM-main/pointnet2
@@ -105,7 +105,7 @@ cd PUDM-main/pointnet2
 python train.py --dataset PU1K
 ```
 ### Testing
-We provide two datasets to test PUDM. The results are in the PUDM-main/pointnet2/test/{dataset} folder.
+We provide two datasets to test PUDM. The results are in the **PUDM-main/pointnet2/test/{dataset}** folder.
 ```
 # For testing PUGAN
 cd PUDM-main/pointnet2
