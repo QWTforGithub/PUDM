@@ -31,7 +31,7 @@ If you find **_PUDM_** useful to your research, please cite our work as an ackno
 ## Installation
 
 ### Requirements
-The following environment is recommended for running **_PUDM_** (an Nvidia 3090 GPU):
+The following environment is recommended for running **_PUDM_** (an NVIDIA 3090 GPU):
 - Ubuntu: 18.04 and above
 - CUDA: 11.1 and above
 - PyTorch: 1.9.1 and above
@@ -109,11 +109,11 @@ We provide two datasets to test PUDM. The results are in the **PUDM-main/pointne
 ```
 # For testing PUGAN
 cd PUDM-main/pointnet2
-python samples.py --dataset PUGAN --R 4 --step 30 --batch_size=27
+python samples.py --dataset PUGAN --R 4 --step 30 --batch_size 27
 ```
 
 ```
 # For testing PU1K
 cd PUDM-main/pointnet2
-python samples.py --dataset PU1K --R 4 --step 30 --batch_size=43
+python samples.py --dataset PU1K --R 4 --step 30 --batch_size 43
 ```
