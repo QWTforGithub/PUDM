@@ -83,7 +83,7 @@ Please put checkpoints in the **PUDM-main/pointnet2/pkls** folder. <br/>
 
 ## Quick Start
 ### Example
-We provide some examples. There examples are in the **PUDM-main/pointnet2/example** folder. The results are in the **PUDM-main/pointnet2/test/example** folder.
+We provide some examples. These examples are in the **PUDM-main/pointnet2/example** folder. The results are in the **PUDM-main/pointnet2/test/example** folder.
 ```bash
 # For example, we can run 30 steps (DDIM) to generate 4x point cloud on KITTI with the pre-trained model of PUGAN.
 # We provide the function (bin2xyz) of converting *.bin to *.xyz in **PUDM-main/pointnet2/dataloder/dataset_utils.py**.
