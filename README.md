@@ -3,6 +3,11 @@
 This repo is the official project repository of the paper **_A Conditional Denoising Diffusion Probabilistic Model for Point Cloud Upsampling_**. 
  - [ [paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Qu_A_Conditional_Denoising_Diffusion_Probabilistic_Model_for_Point_Cloud_Upsampling_CVPR_2024_paper.pdf) ] [ [supp](https://openaccess.thecvf.com/content/CVPR2024/supplemental/Qu_A_Conditional_Denoising_CVPR_2024_supplemental.pdf) ]
 
+## The Version Update Notification
+We plan to release **_PUDM V2_** in the future.<br/>
+This is expected to result in the following improvements compared to PUDM: <br/>
+1. Decoupled the point number. **_PUDM V2_** is based on the points number, not the upsampling ratio. For example, the output (S,3), S can be any positive integer. This means that PUDM V2 is also able to perform downsampling. <br/>
+2. Higher quality surface generation. This focuses more on the qualitative results (visualization) rather than the quantitative ones (CD or HD).
 
 ## The Overall Framework 
 <img src="assets/pudm.png" alt="pudm" width="900"/> 
