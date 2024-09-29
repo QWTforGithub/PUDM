@@ -6,7 +6,7 @@ This repo is the official project repository of the paper **_A Conditional Denoi
 ## The Version Update Notification for **_PUDM V2_**
 We plan to release **_PUDM V2_** in the future.<br/>
 This is expected to result in the following improvements compared to **_PUDM_**: <br/>
-1. Point Number Decoupling. **_PUDM V2_** conducts upsampling based on the point number, not the upsampling rate. For example, the output (S,3), S can be any positive integer. <br/>
+1. Point Number Decoupling. **_PUDM V2_** conducts upsampling based on the point number, not the upsampling rate. For example, the output (S, 3), S can be any positive integer. <br/>
 2. Higher quality generation. This focuses more on the qualitative results (visualization) rather than the quantitative ones (CD or HD).
 
 ## The Overall Framework 
