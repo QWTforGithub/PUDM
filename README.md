@@ -128,7 +128,7 @@ python samples.py --dataset PU1K --R 4 --step 30 --batch_size 43
 ```
 
 ```
-# For upsampling 128x on PUGAN (Please note that the batch size is set to 1 on an NVIDIA 3090 GPU.)
+# For upsampling 128x on PUGAN (please note that the batch size is set to 1 on an NVIDIA 3090 GPU).
 cd PUDM-main/pointnet2
 python samples.py --dataset PUGAN --R 128 --step 30 --batch_size 1
 ```
