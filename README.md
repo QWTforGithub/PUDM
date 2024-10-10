@@ -90,12 +90,12 @@ Please put checkpoints in the **PUDM-main/pointnet2/pkls** folder. <br/>
 ### Example
 We provide some examples. These examples are in the **PUDM-main/pointnet2/example** folder. The results are in the **PUDM-main/pointnet2/test/example** folder.
 ```bash
-# For example 1, we can run 30 steps (DDIM) to generate 4x point cloud on KITTI with the pre-trained model of PUGAN.
+# For example 1 (4x), we can run 30 steps (DDIM) to generate 4x point cloud on KITTI with the pre-trained model of PUGAN.
 # We provide the function (bin2xyz) of converting *.bin to *.xyz in **PUDM-main/pointnet2/dataloder/dataset_utils.py**.
 cd PUDM-main/pointnet2
 python example_samples.py --dataset PUGAN --R 4 --step 30 --example_file ./example/KITTI.xyz
 
-# For example 2, we can run 30 steps (DDIM) to generate 128x point cloud for pig.xyz with the pre-trained model of PUGAN on an NVIDIA 3090 GPU.
+# For example 2 (128x), we can run 30 steps (DDIM) to generate 128x point cloud for pig.xyz with the pre-trained model of PUGAN on an NVIDIA 3090 GPU.
 cd PUDM-main/pointnet2
 python example_samples.py --dataset PUGAN --R 128 --step 30 --example_file ./example/pig.xyz
 ```
