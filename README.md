@@ -57,6 +57,7 @@ pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f ht
 pip install open3d termcolor tqdm einops transforms3d==0.3.1
 pip install msgpack-numpy lmdb h5py hydra-core==0.11.3 pytorch-lightning==0.7.1
 pip install scikit-image black usort flake8 matplotlib jupyter imageio fvcore plotly opencv-python
+pip install markdown==3.1.0
 
 # For installing pytorch3d, please follow:
 1. download pytorch3d-0.6.1-py37_cu111_pyt191.tar.bz2 from https://anaconda.org/pytorch3d/pytorch3d/files?page=10
