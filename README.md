@@ -60,7 +60,9 @@ pip install scikit-image black usort flake8 matplotlib jupyter imageio fvcore pl
 pip install markdown==3.1.0
 
 # For installing pytorch3d, please follow:
-1. download pytorch3d-0.6.1-py37_cu111_pyt191.tar.bz2 from https://anaconda.org/pytorch3d/pytorch3d/files?page=10
+1. download pytorch3d-0.6.1-py37_cu111_pyt191.tar.bz2
+   The official website: https://anaconda.org/pytorch3d/pytorch3d/files?page=10
+   Our links: Baidu Netdisk and Google Drive in Model Zoom
 2. conda install pytorch3d-0.6.1-py37_cu111_pyt191.tar.bz2
 
 # compile C++ extension packages
