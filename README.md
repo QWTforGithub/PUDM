@@ -119,12 +119,15 @@ python train.py --dataset PU1K
 ### Errors that may occur during training
 ```
 # If you encounter the errors: AttributeError: module 'distutils' has no attribute 'version'
+
 # Traceback (most recent call last):
 #  File "train.py", line 8, in <module>
 #    from torch.utils.tensorboard import SummaryWriter
 #  File "/dataa/anaconda3/envs/pudm/lib/python3.7/site-packages/torch/utils/tensorboard/__init__.py", line 4, in <module>
 #    LooseVersion = distutils.version.LooseVersion
 # AttributeError: module 'distutils' has no attribute 'version'
+
+# Please follow the steps below to solve
 1. Open the __init__.py file: vim /dataa/anaconda3/envs/pudm/lib/python3.7/site-packages/torch/utils/tensorboard/__init__.py
 2. Comment this statement: # LooseVersion = distutils.version.LooseVersion
 3. Add this import: from distutils.version import LooseVersion
