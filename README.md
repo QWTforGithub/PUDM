@@ -66,6 +66,7 @@ pip install markdown==3.1.0
 2. conda install pytorch3d-0.6.1-py37_cu111_pyt191.tar.bz2
 
 # compile C++ extension packages
+cd PUDM-main
 sh compile.sh
 ```
 
